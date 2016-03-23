@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/home/wxq/today_headline/blog/venv/bin/python
 import os
 import sys
 
