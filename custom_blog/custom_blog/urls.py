@@ -1,17 +1,20 @@
-from django.conf.urls import patterns, include, url
+# -*- coding: utf-8 -*-
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+#from article.views import RSSFeed
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'custom_blog.views.home', name='home'),
-    # url(r'^custom_blog/', include('custom_blog.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-)
+                          # Examples:
+                          # url(r'^$', 'my_blog.views.home', name='home'),
+                          # url(r'^blog/', include('blog.urls')),
+                      
+                          url(r'^admin/', include(admin.site.urls)),
+                          url(r'^$', 'article.views.home', name = 'home'),
+                          url(r'^(?P<id>\d+)/$', 'article.views.detail', name='detail'),
+                          url(r'^archives/$', 'article.views.archives', name = 'archives'),
+                          url(r'^aboutme/$', 'article.views.about_me', name = 'about_me'),
+                          url(r'^tag/(?P<tag>\w+)/$', 'article.views.search_tag', name = 'search_tag'),
+                          url(r'^search/$','article.views.blog_search', name = 'search'),
+                         # url(r'^feed/$', RSSFeed(), name = "RSS"),
+                      )
