@@ -20,3 +20,5 @@ def home(request):
             post_list = paginator.paginator(paginator.num_pages)
         return render(request, 'home.html', {'post_list' : post_list})
 
+def hello_world(request):
+    return HttpResponse("Hello World!")
