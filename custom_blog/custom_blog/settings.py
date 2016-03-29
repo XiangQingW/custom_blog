@@ -1,11 +1,13 @@
 # Django settings for custom_blog project.
 import os
+from django.conf import global_settings
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 BASE_DIR = os.path.dirname(os.path.dirname('__file__'))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+
 
 MANAGERS = ADMINS
 
