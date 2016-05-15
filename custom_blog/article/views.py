@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
 from django.http import HttpResponse
 from article.models import Article
+from article.models import BlogDatabase
 from django.http import Http404
-
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template.loader import get_template
+from django import template
+import time
 
 
 # Create your views here.
 
-def home(request):
-    post_list = Article.objects.all()  #获取全部的Article对象
-    return render(request, 'home.html', {'post_list' : post_list})
+def current_time():
+    return time.strftime('%Y-%m-%d %X',time.localtime(time.time()))
 
-def hello_world(request):
-    return HttpResponse("Hello World!")
+
+def home(request):
+    t = get_template('home.html')
+    html = t.render()
+    return HttpResponse(html)
 
 def detail(request, id):
     try:
@@ -22,3 +25,34 @@ def detail(request, id):
     except Article.DoesNotExit:
         raise Http404
     return HttpResponse(request, 'post.html', {'post':post})
+
+def wonderful_life(request):
+    print('I am running')
+    t = get_template('wonderful_life.html')
+    html = t.render()
+    return HttpResponse(html)
+
+def coding(request):
+    articles = BlogDatabase.objects.all()
+    t = get_template('coding.html')
+    c = template.Context({'articles':articles})
+    html = t.render(c)
+    return HttpResponse(html)
+
+def thought(request):
+    t = get_template('thought.html')
+    html = t.render()
+    return HttpResponse(html)
+
+def manage(request):
+    t = get_template('manage.html')
+    html = t.render()
+    return HttpResponse(html)
+
+def show_article(request):
+    t = get_template('show_article.html')
+    format_time = current_time()
+    article_fill = {'title':'测试文章', 'current_time':format_time, 'content':'测试内容'}
+    c = template.Context({'article_fill':article_fill})
+    html = t.render(c)
+    return HttpResponse(html)

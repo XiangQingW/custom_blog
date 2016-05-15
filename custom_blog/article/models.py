@@ -14,3 +14,9 @@ class Article(models.Model) :
 
     class Meta: 
         ordering = ['-date_time']
+
+class BlogDatabase(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.CharField(max_length=10000)
+    comment_nums = models.CharField(max_length=20)
+    dummy = models.CharField(max_length=100)
