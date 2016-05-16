@@ -27,7 +27,9 @@
             <div class="mainContent">
                 <div class="abstract">
                     {% for article in articles %}
-                        <a href="show_article">{{ article.title  }}</a>
+                    <div class="item_wraper">
+                        <a href="{{ article.id }}">{{ article.title  }}</a>
+                    </div>
                     {% endfor %}
                 </div>
                 <div class="time_label">

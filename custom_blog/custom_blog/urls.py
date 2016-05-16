@@ -17,7 +17,7 @@ urlpatterns = patterns('',
                         url(r'^thought/$', 'article.views.thought', name = 'thought'),
                         url(r'^wonderful_life/$', 'article.views.wonderful_life', name = 'wonderful_life'),
                         url(r'^manage/$', 'article.views.manage', name = 'manage'),
-                        url(r'^coding/show_article/$', 'article.views.show_article', name = 'show_article'),
+                        url(r'^coding/[0-9]*/$', 'article.views.show_article', name = 'show_article'),
                       )
 if settings.DEBUG:  
     urlpatterns += patterns('',  

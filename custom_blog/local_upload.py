@@ -12,7 +12,6 @@ class LocalUPload:
 
     def save_local(self, file_name):
         title, content = self.read_from_file(file_name)
-        print type(title)
         BlogDatabase.objects.create(title=title, content=content)
 
     def read_from_file(self, file_name):
@@ -22,6 +21,5 @@ class LocalUPload:
         return title, content
 
 if __name__ == "__main__":
-    BlogDatabase.objects.all().delete()
     localupload = LocalUPload();
     localupload.save_local(u"./local_file/5_15_道德经.data")

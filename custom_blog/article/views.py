@@ -50,9 +50,10 @@ def manage(request):
     return HttpResponse(html)
 
 def show_article(request):
+    full_path = request.get_full_path()
+    article_id = int(full_path.split('/')[2])
+    article_fill = BlogDatabase.objects.get(id=article_id)
     t = get_template('show_article.html')
-    format_time = current_time()
-    article_fill = {'title':'测试文章', 'current_time':format_time, 'content':'测试内容'}
     c = template.Context({'article_fill':article_fill})
     html = t.render(c)
     return HttpResponse(html)
