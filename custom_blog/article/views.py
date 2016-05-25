@@ -6,7 +6,7 @@ from django.http import Http404
 from django.template.loader import get_template
 from django import template
 import time
-
+import untils
 
 # Create your views here.
 
@@ -27,7 +27,9 @@ def detail(request, id):
     return HttpResponse(request, 'post.html', {'post':post})
 
 def wonderful_life(request):
-    print('I am running')
+    lst = untils.Untils.get_albums()
+    for l in lst:
+        print lst
     t = get_template('wonderful_life.html')
     html = t.render()
     return HttpResponse(html)
