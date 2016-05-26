@@ -15,9 +15,11 @@
         </div>
 
         <div class="containter">
-            <a href="/woderfu_life/photo">
-                <img src="/static/image/album1/1.jpg" alt="第一个相册" style="width:265px; height:353px;"/>
+            {% for cover in albums_cover %}
+            <a href="/woderful_life/photo">
+                <img src="{{ cover }}" alt="第一个相册" style="width:265px; height:353px;"/>
             </a>
+            {% endfor %} 
         </div>
         <script src="/static/js/main_album.js"></script>
     </body>

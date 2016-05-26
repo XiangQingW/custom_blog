@@ -33,3 +33,8 @@ body {
 .containter {
     margin:10px 0;
 }
+
+.containter img {
+    margin-right:5px;
+    margin-bottom:10px;
+}

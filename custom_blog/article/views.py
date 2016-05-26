@@ -27,11 +27,11 @@ def detail(request, id):
     return HttpResponse(request, 'post.html', {'post':post})
 
 def wonderful_life(request):
-    lst = untils.Untils.get_albums()
-    for l in lst:
-        print lst
+    cover = untils.Untils.get_albums()
     t = get_template('wonderful_life.html')
-    html = t.render()
+    print cover
+    c = template.Context({'albums_cover':'abcdefg'})
+    html = t.render({'albums_cover':cover})
     return HttpResponse(html)
 
 def coding(request):
